@@ -1,12 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipts.html</title>
 </head>
+
 <body>
     <p>These are your receipts:</p>
+
+
+    <script>
+        var button = document.createElement("button");
+        document.body.appendChild(button);
+        button.id = "button"
+        makeText("Get Receipts", button)
+
+        fetch("./getInfo").then(function (data) {
+            return data.text()
+        }).then(function (result) {
+            var obj = result;
+            console.log(JSON.parse(obj));
+        })
+
+        document.getElementById("button").addEventListener("click", function () {
+            var value = document.getElementById("input").value
+            console.log(value)
+            fetch("./postInfo").then(function (data) {
+                return data.text()
+            }).then(function (result) {
+                var obj = result;
+                console.log(JSON.parse(obj));
+            })
+
+            var data = value
+            fetch("./postInfo", {
+                method: 'POST',
+                body: JSON.stringify(value)
+            }).then(data => {
+                return data.text()
+            }).then(result => {
+                console.log(result)
+            })
+        })
+        var count = 0
+        document.getElementById("button2").addEventListener("click", function () {
+            fetch("./getInfo").then(function (data) {
+                return data.text()
+            }).then(function (result) {
+                var obj = result;
+                console.log("69: " + JSON.parse(obj));
+                var text = JSON.parse(obj);
+                count++;
+                var para = document.createElement("p");
+                document.body.appendChild(para);
+                para.id = "para" + count
+                var id = document.getElementById("para" + count)
+                makeText(text, id)
+            })
+        })
+    </script>
 </body>
+
 </html>
