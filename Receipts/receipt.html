@@ -13,17 +13,31 @@
 
 
     <script>
+
+        function makeText(words, element) {
+            var text = document.createTextNode(words);
+            element.appendChild(text)
+        }
+
+        var para = document.createElement("p");
+        document.body.appendChild(para);
+        para.id = "para"
+
+        function getReceipts() {
+            fetch("./test").then(function (data) {
+                return data.text()
+            }).then(function (result) {
+                var obj = result;
+                console.log(obj);
+                makeText(obj, para)
+            })
+        } 
+        getReceipts()
+
         var button = document.createElement("button");
         document.body.appendChild(button);
         button.id = "button"
         makeText("Get Receipts", button)
-
-        fetch("./getInfo").then(function (data) {
-            return data.text()
-        }).then(function (result) {
-            var obj = result;
-            console.log(JSON.parse(obj));
-        })
 
         document.getElementById("button").addEventListener("click", function () {
             var value = document.getElementById("input").value
@@ -45,8 +59,9 @@
                 console.log(result)
             })
         })
+
         var count = 0
-        document.getElementById("button2").addEventListener("click", function () {
+        document.getElementById("button").addEventListener("click", function () {
             fetch("./getInfo").then(function (data) {
                 return data.text()
             }).then(function (result) {

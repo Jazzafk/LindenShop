@@ -1,3 +1,1 @@
-"This is your first receipt"
-"This is your second receipt"
-"This is your third receipt"
+"This is your first receipt".

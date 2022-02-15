@@ -10,6 +10,7 @@ http.createServer((req, res) => { // function that creates a local server
             fs.readFile("./receipt.html", (err, data) => {
                 res.end(data);
             })
+        } else if(url=="/test"){
             fs.readFile("./info.txt", "utf8", (err, data2) => {
                 res.write(data2)
                 res.end();
