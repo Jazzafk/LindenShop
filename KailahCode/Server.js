@@ -28,7 +28,7 @@ http.createServer((req, res) => { // function that creates a local server
     req.on("end", () => {
         console.log("body", body)
         res.end("success")
-        fs.writeFile('./info.txt', body, err => {
+        fs.appendFile('./info.txt', body, err => {
             if (err) {
                 console.error(err)
                 return
@@ -39,4 +39,4 @@ http.createServer((req, res) => { // function that creates a local server
 }
 }).listen(PORT);
 
-//http://localhost:3000/receipt.html
+//http://localhost:3000/receipts.html

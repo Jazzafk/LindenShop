@@ -11,8 +11,22 @@
 <body>
     <p>These are your receipts:</p>
 
-
     <script>
+
+        var TestObj = {
+            pencil: {
+                price: 4,
+                barcodeNum: '025820347236',
+                img: '',
+                numberStock: 420,
+                quantity: 1,
+            },
+            Pricepretax: 4,
+            tax: 4.52,
+            date: "February 22 2022",
+            transactionNumber: '10001000199',
+            total: 4.52
+        }
 
         function makeText(words, element) {
             var text = document.createTextNode(words);
@@ -23,6 +37,11 @@
         document.body.appendChild(para);
         para.id = "para"
 
+        var button = document.createElement("button");
+        document.body.appendChild(button);
+        button.id = "button"
+        makeText("Get Receipts", button)
+
         function getReceipts() {
             fetch("./test").then(function (data) {
                 return data.text()
@@ -31,16 +50,23 @@
                 console.log(obj);
                 makeText(obj, para)
             })
-        } 
-        getReceipts()
-
-        var button = document.createElement("button");
-        document.body.appendChild(button);
-        button.id = "button"
-        makeText("Get Receipts", button)
-
+        }
         document.getElementById("button").addEventListener("click", function () {
-            var items = products
+            getReceipts()
+        })
+
+        var button2 = document.createElement("button");
+        document.body.appendChild(button2);
+        button2.id = "button2"
+        makeText("Send Receipts", button2)
+
+        var para2 = document.createElement("p");
+        document.body.appendChild(para2);
+        para2.id = "para2"
+        makeText(TestObj, para2)
+
+        document.getElementById("button2").addEventListener("click", function () {
+            var items = TestObj
             console.log(items)
             fetch("./postReceipts").then(function (data) {
                 return data.text()
@@ -49,10 +75,10 @@
                 console.log(JSON.parse(obj));
             })
 
-            var data = items
+            //var data = items
             fetch("./postReceipts", {
                 method: 'POST',
-                body: JSON.stringify(value)
+                body: JSON.stringify(items)
             }).then(data => {
                 return data.text()
             }).then(result => {
@@ -62,7 +88,7 @@
 
         var count = 0
 
-        function PostInfo(){
+        function PostInfo() {
             fetch("./getInfo").then(function (data) {
                 return data.text()
             }).then(function (result) {
