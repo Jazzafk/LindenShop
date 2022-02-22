@@ -36,6 +36,7 @@ function displaySingle(item, allProd){
 
 function displayAll(container){
     var allProd = document.createElement('div');
+    allProd.id='allProdCSS';
     container.appendChild(allProd);
     var allProdArr = Object.keys(products);
     for (i=0;i<allProdArr.length;i++){

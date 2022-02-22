@@ -1,8 +1,25 @@
+body {
+    overflow:hidden;
+}
+#productContainer{
+    height:90vh;
+    width:90vw;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+#allProdCSS{
+    height:auto;
+    width:auto;
+    display:flex;
+    flex-direction:column;
+}
 .prodDivClass{
     height:100vh;
     width:auto;
+    display:flex;
+    flex-direction:row;
 }
 .prodImgClass{
-    height:100%;
-    width:auto;
+    height:auto;
+    width:25%;
 }
