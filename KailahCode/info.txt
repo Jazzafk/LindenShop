@@ -11,4 +11,4 @@ var products = {
     date: "February 12 2022",
     transactionNumber: '10001000200',
     total: 67.8
-}
+}{"pencil":{"price":4,"barcodeNum":"025820347236","img":"","numberStock":420,"quantity":1},"Pricepretax":4,"tax":4.52,"date":"February 22 2022","transactionNumber":"10001000199","total":4.52}
