@@ -29,9 +29,11 @@ function displaySingle(item, allProd){
     var prodName = document.createElement('h3');
     prodDiv.appendChild(prodName);
     makeText(products[item]['name'], prodName);
+    prodName.classList.add('prodNameClass');
     var prodPrice = document.createElement('h4');
     prodDiv.appendChild(prodPrice);
     makeText('$' + (products[item]['price']), prodPrice);
+    prodPrice.classList.add('prodPriceClass');
 }
 
 function displayAll(container){

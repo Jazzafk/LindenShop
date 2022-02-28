@@ -18,8 +18,18 @@ body {
     width:auto;
     display:flex;
     flex-direction:row;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-content:flex-start;
 }
 .prodImgClass{
     height:auto;
     width:25%;
+}
+.prodNameClass{
+
+}
+.prodPriceClass{
+
 }
