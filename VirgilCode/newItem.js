@@ -15,9 +15,6 @@ var products = {
     }
 }
 
-// var allProd = document.createElement('div');
-// document.body.appendChild(allProd);
-
 function displaySingle(item, allProd){
     var prodDiv = document.createElement('div');
     allProd.appendChild(prodDiv);
@@ -34,8 +31,10 @@ function displaySingle(item, allProd){
     prodDiv.appendChild(prodPrice);
     makeText('$' + (products[item]['price']), prodPrice);
     prodPrice.classList.add('prodPriceClass');
+    var check = document.createElement('input');
+    check.type = 'checkbox';
+    prodDiv.appendChild(check);
 }
-
 function displayAll(container){
     var allProd = document.createElement('div');
     allProd.id='allProdCSS';
@@ -45,5 +44,4 @@ function displayAll(container){
         displaySingle(allProdArr[i], allProd);
     }
 }
-
 displayAll(document.getElementById('productContainer'));
