@@ -14,7 +14,8 @@ var products = {
         numberStock: 420
     }
 }
-
+var cartList=[];
+var checkBoxes=[];
 function displaySingle(item, allProd){
     var prodDiv = document.createElement('div');
     allProd.appendChild(prodDiv);
@@ -34,14 +35,26 @@ function displaySingle(item, allProd){
     var check = document.createElement('input');
     check.type = 'checkbox';
     prodDiv.appendChild(check);
+    checkBoxes.push(check);
 }
 function displayAll(container){
     var allProd = document.createElement('div');
     allProd.id='allProdCSS';
     container.appendChild(allProd);
+    var checkOut=document.createElement('button');
+    makeText('Check Out',checkOut);
+    container.appendChild(checkOut);
     var allProdArr = Object.keys(products);
     for (i=0;i<allProdArr.length;i++){
         displaySingle(allProdArr[i], allProd);
     }
+    checkOut.addEventListener('click', function(){
+        for(i=0;i<allProdArr.length;i++){
+            if((checkBoxes[i]).checked==true){
+                cartList.push(allProdArr[i]);
+            }
+        }
+        console.log(cartList);
+    })
 }
 displayAll(document.getElementById('productContainer'));
